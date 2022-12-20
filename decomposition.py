@@ -37,12 +37,6 @@ class Decomposition:
 
         for j in range(n):
             lower[j][j] = 1.0
-            for i in range(j+1):
-                s1 = sum(upper[k][j] * lower[i][k] for k in range(i))
-                upper[i][j] = matrix[i][j] - s1
-            for i in range(j, n):
-                s2 = sum(upper[k][j] * lower[i][k] for k in range(j))
-                lower[i][j] = (matrix[i][j] - s2) / upper[j][j]
 
         return lower, upper
 
