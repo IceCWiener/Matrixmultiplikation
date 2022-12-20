@@ -19,6 +19,6 @@ class Decomposition:
         for j in range(n):
             lower[j][j] = 1.0
 
-        return lower, upper
+        return [lower, upper]
 
 

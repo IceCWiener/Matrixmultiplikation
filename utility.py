@@ -16,3 +16,7 @@ class Utility:
                 for k in range(cols_upper):
                     result_matrix[i][j] += upper[i][k] * lower[k][j]
         return result_matrix
+
+    def pretty_print_matrix(self, list: list[list[float]]):
+        for i in list:
+            print(f"{i}")
