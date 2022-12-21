@@ -6,8 +6,8 @@ class Utility:
         cols_lower = len(lower[0])
 
         if cols_upper != rows_lower:
-            print("Matrizen können nicht multipliziert werden. Inkorrekte Dimensionen.")
-            return
+            message = "Matrizen können nicht multipliziert werden. Inkorrekte Dimensionen."
+            return message
 
         result_matrix = [[0 for row in range(cols_lower)] for col in range(rows_upper)]
 
