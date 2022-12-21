@@ -17,6 +17,6 @@ class Utility:
                     result_matrix[i][j] += upper[i][k] * lower[k][j]
         return result_matrix
 
-    def pretty_print_matrix(self, list: list[list[float]]):
-        for i in list:
+    def pretty_print_matrix(self, matrix: list[list[float]]):
+        for i in matrix:
             print(f"{i}")
