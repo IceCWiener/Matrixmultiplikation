@@ -9,8 +9,9 @@ def collect_matrix():
 if __name__ == '__main__':
     util = Utility()
 
+    # Example input to be deleted
     a_matrix = [[1, 2, 3],
-                [4, 5, 6], 
+                [4, 5, 6],
                 [7, 8, 9]]
 
     b_matrix = [[3, 5, 1],
