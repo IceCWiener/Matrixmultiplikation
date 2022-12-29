@@ -1,4 +1,5 @@
 import ast
+from numbers import Number
 
 
 class Utility:
@@ -40,10 +41,10 @@ class Utility:
         """formats a matrix from string for list and casts all numbers to floats"""
         try:
             result = ast.literal_eval(matrix)
-            if type(result[0]) == list:
-                result = [[float(j) for j in i] for i in result]
-            else:
-                result = [float(i) for i in result]
+            if isinstance(result[0], Number):
+                for i in range(len(result)):
+                    result[i] = [result[i]]
+            result = [[float(j) for j in i] for i in result]
 
             return result
         except:
