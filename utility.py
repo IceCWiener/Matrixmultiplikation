@@ -4,7 +4,6 @@ from numbers import Number
 
 class Utility:
     def get_products(self, matrix_a, matrix_b):
-        # TODO: make this work for 1x2 & 2x1 matrices
         rows_a = len(matrix_a)
         cols_a = len(matrix_a[0])
         rows_b = len(matrix_b)
