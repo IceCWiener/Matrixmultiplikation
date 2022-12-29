@@ -1,5 +1,9 @@
+import ast
+
+
 class Utility:
     def get_products(self, matrix_a, matrix_b):
+        # TODO: make this work for 1x2 & 2x1 matrices
         rows_a = len(matrix_a)
         cols_a = len(matrix_a[0])
         rows_b = len(matrix_b)
@@ -20,3 +24,28 @@ class Utility:
     def pretty_print_matrix(self, matrix: list[list[float]]):
         for i in matrix:
             print(f"{i}")
+
+    def format_matrix_list_to_str(self, matrix: list[list[float]]):
+        """changes a list-type matrix into a str-matrix with new-lines added"""
+        matrix = str(matrix).split('],')
+        result = ""
+
+        for i in range(len(matrix)-1):
+            result += matrix[i] + "],\n"
+        result += matrix[len(matrix)-1]
+
+        return result
+
+    def format_matrix_str_to_list(self, matrix: str):
+        """formats a matrix from string for list and casts all numbers to floats"""
+        try:
+            result = ast.literal_eval(matrix)
+            if type(result[0]) == list:
+                result = [[float(j) for j in i] for i in result]
+            else:
+                result = [float(i) for i in result]
+
+            return result
+        except:
+            return (
+                "Der eingegebene Matrix-String konnte nicht in eine Liste konvertiert werden. Bitte die Eingabe in das Format: [[1, 2], [3, 4]] ändern.")
