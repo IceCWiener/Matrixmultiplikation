@@ -1,13 +1,11 @@
 import PySimpleGUI as sg
-import ast
 from utility import Utility
-from decomposition import Decomposition
-
+from gauss import Gauss
 
 class GUI:
     def __init__(self) -> None:
         self.util = Utility()
-        self.decom = Decomposition()
+        self.gauss = Gauss()
 
     def start_gui(self):
         """
@@ -101,7 +99,7 @@ class GUI:
                     values["-INPUTLU-"])
                 if input == None:
                     break
-                l_mat, u_mat = self.decom.lu_decomposition(input)
+                l_mat, u_mat = self.gauss.lu_decomposition(input)
                 window["-MATRIXL-"].update(
                     self.util.format_matrix_list_to_str(l_mat))
                 window["-MATRIXU-"].update(
