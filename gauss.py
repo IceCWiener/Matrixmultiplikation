@@ -1,11 +1,8 @@
-import numpy as np
-
-
 class Gauss:
 
-    def row_mod(self, matrix, i_row, j_row, factor):
-        matrix[i_row] = [a + factor * b for a, b in zip(matrix[i_row], matrix[j_row])]
-        return matrix[i_row]
+    # def row_mod(self, matrix, i_row, j_row, factor):
+    #     matrix[i_row] = [a + factor * b for a, b in zip(matrix[i_row], matrix[j_row])]
+    #     return matrix[i_row]
 
     def lu_decomposition(self, a_matrix):
 
@@ -25,16 +22,14 @@ class Gauss:
         for z in range(n):
             l_matrix[z][z] = 1.
 
-        # Zerlegt a_matrix in l_matrix und u_matrix (im Code weiterhin als a_matrix)
-        row, col = 0, 0
-        rows, cols = n, n
-        while row < rows and col < cols:
-            pivot = a_matrix[row][col]
-            for i in range(row + 1, rows):
-                if a_matrix[i][col] != 0:
-                    l_matrix[i][col] = a_matrix[i][col] / pivot
-                    a_matrix[i] = self.row_mod(a_matrix, i, row, -a_matrix[i][col] / pivot)
+        # Zerlegt a_matrix in L und R Matrix (R Matrix im Code weiterhin als a_matrix bezeichnet)
+        row, column = 0, 0
+        while row < n and column < n:
+            for i in range(row + 1, n):
+                if a_matrix[i][column] != 0:
+                    l_matrix[i][column] = a_matrix[i][column] / a_matrix[row][column]
+                    a_matrix[i] = [modified_row - a_matrix[i][column] / a_matrix[row][column] * pivot_row for modified_row, pivot_row in zip(a_matrix[i], a_matrix[row])]
             row += 1
-            col += 1
+            column += 1
 
         return l_matrix, a_matrix
