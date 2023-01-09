@@ -3,31 +3,38 @@ import numpy as np
 
 class Gauss:
 
+    def row_mod(self, matrix, i_row, j_row, factor):
+        matrix[i_row] = [a + factor * b for a, b in zip(matrix[i_row], matrix[j_row])]
+        return matrix[i_row]
+
     def lu_decomposition(self, a_matrix):
 
-        if type(a_matrix) == list:
-            a_matrix = np.array(a_matrix)
+        # TODO: in utility einfügen
+        # Überprüft, ob die Matrix quadratisch ist
+        n = len(a_matrix)
+        for x in range(n):
+            m = len(a_matrix[x])
+            if m != n:
+                raise ValueError("Die Matrix ist nicht quadratisch.")
 
-        # Überprüfen, ob die Matrix quadratisch ist
-        n = a_matrix.shape[0]
-        if a_matrix.shape[1] != n:
-            raise ValueError("Die Matrix ist nicht quadratisch.")
+        # TODO: in utility einfügen
+        # Erstellt eine leere untere Dreiecksmatrix
+        l_matrix = [0.] * n
+        for y in range(n):
+            l_matrix[y] = [0.] * n
+        for z in range(n):
+            l_matrix[z][z] = 1.
 
-        # Erstellen der leeren unteren Dreiecksmatrix l_matrix
-        l_matrix = np.zeros((n, n))
-        # Erstellen der leeren oberen Dreiecksmatrix u_matrix
-        u_matrix = np.zeros((n, n))
+        # Zerlegt a_matrix in l_matrix und u_matrix (im Code weiterhin als a_matrix)
+        row, col = 0, 0
+        rows, cols = n, n
+        while row < rows and col < cols:
+            pivot = a_matrix[row][col]
+            for i in range(row + 1, rows):
+                if a_matrix[i][col] != 0:
+                    l_matrix[i][col] = a_matrix[i][col] / pivot
+                    a_matrix[i] = self.row_mod(a_matrix, i, row, -a_matrix[i][col] / pivot)
+            row += 1
+            col += 1
 
-        # Zerlegen der a_matrix in l_matrix und u_matrix
-        for i in range(n):  # i = Zeilen
-            # Berechnen der Elemente der i-ten Spalte von l_matrix und der i-ten Zeile von u_matrix
-            for j in range(i + 1):  # j = Spalten
-                s = sum(l_matrix[i][k] * u_matrix[k][j] for k in range(j))
-                if i == j:
-                    l_matrix[i][j] = np.sqrt(a_matrix[i][i] - s)
-                    u_matrix[i][j] = np.sqrt(a_matrix[i][i] - s)
-                else:
-                    l_matrix[i][j] = (1.0 / l_matrix[j][j] * (a_matrix[i][j] - s))
-                    u_matrix[j][i] = (1.0 / u_matrix[j][j] * (a_matrix[i][j] - s))
-
-        return l_matrix.tolist(), u_matrix.tolist()
+        return l_matrix, a_matrix
