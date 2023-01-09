@@ -1,12 +1,9 @@
 class Gauss:
 
-    # def row_mod(self, matrix, i_row, j_row, factor):
-    #     matrix[i_row] = [a + factor * b for a, b in zip(matrix[i_row], matrix[j_row])]
-    #     return matrix[i_row]
 
     def lu_decomposition(self, a_matrix):
 
-        # TODO: in utility einfügen
+        # TODO: in utility einfügen, aber n muss bleiben
         # Überprüft, ob die Matrix quadratisch ist
         n = len(a_matrix)
         for x in range(n):
@@ -22,10 +19,12 @@ class Gauss:
         for z in range(n):
             l_matrix[z][z] = 1.
 
-        # Zerlegt a_matrix in L und R Matrix (R Matrix im Code weiterhin als a_matrix bezeichnet)
+        # Zerlegt a_matrix in L und R Matrix mit Typ 3 der Elementare Zeilenumformungen
+        # (R Matrix im Code weiterhin als a_matrix bezeichnet)
         row, column = 0, 0
         while row < n and column < n:
             for i in range(row + 1, n):
+                # TODO: das if statement kann theoretisch auch weg
                 if a_matrix[i][column] != 0:
                     l_matrix[i][column] = a_matrix[i][column] / a_matrix[row][column]
                     a_matrix[i] = [modified_row - a_matrix[i][column] / a_matrix[row][column] * pivot_row for modified_row, pivot_row in zip(a_matrix[i], a_matrix[row])]
