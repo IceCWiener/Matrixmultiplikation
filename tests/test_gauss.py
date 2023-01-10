@@ -11,9 +11,9 @@ class TestGauss(unittest.TestCase):
         ]
 
         expected = [
-            [1, 0, 0],
-            [4, 1, 0],
-            [7, 8, 1]
+            [1., 0., 0.],
+            [4., 1., 0.],
+            [7., 2., 1.]
         ]
         gauss = Gauss()
         self.assertEqual(expected, gauss.lu_decomposition(matrix)[0])
@@ -26,12 +26,12 @@ class TestGauss(unittest.TestCase):
         ]
 
         expected = [
-            [1, 2, 3],
-            [0, 1, 2],
-            [0, 0, 1]
+            [1., 2., 3.],
+            [0., -3., -6.],
+            [0., 0., 0.]
         ]
         gauss = Gauss()
-        self.assertEqual(expected, gauss.lu_decomposition(matrix)[1])    
+        self.assertEqual(expected, gauss.lu_decomposition(matrix)[1])
 
     def test_should_raise_value_error(self):
         matrix = [
@@ -42,5 +42,5 @@ class TestGauss(unittest.TestCase):
         expected = ValueError
 
         gauss = Gauss()
-        with self.assertRaises(expected): 
+        with self.assertRaises(expected):
             gauss.lu_decomposition(matrix)
