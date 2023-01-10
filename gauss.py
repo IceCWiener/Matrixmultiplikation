@@ -1,6 +1,5 @@
 class Gauss:
 
-
     def lu_decomposition(self, a_matrix):
 
         # TODO: in utility einfügen, aber n muss bleiben
@@ -24,10 +23,8 @@ class Gauss:
         row, column = 0, 0
         while row < n and column < n:
             for i in range(row + 1, n):
-                # TODO: das if statement kann theoretisch auch weg
-                if a_matrix[i][column] != 0:
-                    l_matrix[i][column] = a_matrix[i][column] / a_matrix[row][column]
-                    a_matrix[i] = [modified_row - a_matrix[i][column] / a_matrix[row][column] * pivot_row for modified_row, pivot_row in zip(a_matrix[i], a_matrix[row])]
+                l_matrix[i][column] = a_matrix[i][column] / a_matrix[row][column]
+                a_matrix[i] = [modified_row - a_matrix[i][column] / a_matrix[row][column] * pivot_row for modified_row, pivot_row in zip(a_matrix[i], a_matrix[row])]
             row += 1
             column += 1
 
