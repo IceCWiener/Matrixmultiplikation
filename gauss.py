@@ -1,4 +1,9 @@
+from utility import Utility
+
+
 class Gauss:
+    def __init__(self) -> None:
+        self.util = Utility()
 
     def lu_decomposition(self, a_matrix):
 
@@ -24,7 +29,8 @@ class Gauss:
         while row < n and column < n:
             for i in range(row + 1, n):
                 l_matrix[i][column] = a_matrix[i][column] / a_matrix[row][column]
-                a_matrix[i] = [modified_row - a_matrix[i][column] / a_matrix[row][column] * pivot_row for modified_row, pivot_row in zip(a_matrix[i], a_matrix[row])]
+                a_matrix[i] = [modified_row - l_matrix[i][column]
+                               * pivot_row for modified_row, pivot_row in self.util.manual_zip(a_matrix[i], a_matrix[row])]
             row += 1
             column += 1
 
