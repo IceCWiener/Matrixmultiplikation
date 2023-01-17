@@ -30,16 +30,14 @@ class Gauss:
             for i in range(row + 1, n):
                 l_matrix[i][column] = a_matrix[i][column] / a_matrix[row][column]
                 a_matrix[i] = [modified_row - l_matrix[i][column]
-                               * pivot_row for modified_row, pivot_row in self.manual_zip(a_matrix[i], a_matrix[row])]
+                               * pivot_row for modified_row, pivot_row in self.pair_items(a_matrix[i], a_matrix[row])]
             row += 1
             column += 1
 
         return l_matrix, a_matrix
 
 
-    def manual_zip(self, part1: tuple, part2: tuple):
-        #TODO: write test for this function (Nina)
-        #TODO: funktion umbenennen (mathe spezifisch :) )(Nina)
+    def pair_items(self, part1: tuple, part2: tuple):
         if len(part1) >= len(part2):
             count = len(part2)
         else:

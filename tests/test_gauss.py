@@ -249,16 +249,16 @@ class TestGauss(unittest.TestCase):
         first = (3, 5)
         second = (8, 9)
         gauss = Gauss()
-        self.assertEqual([[3, 8], [5, 9]], gauss.manual_zip(first, second))
+        self.assertEqual([[3, 8], [5, 9]], gauss.pair_items(first, second))
 
     def test_should_return_list_of_elements_when_two_tuples_given_first_longer(self):
         first = (3, 6, 9)
         second = (8, 9)
         gauss = Gauss()
-        self.assertEqual([[3, 8], [6, 9]], gauss.manual_zip(first, second))
+        self.assertEqual([[3, 8], [6, 9]], gauss.pair_items(first, second))
 
     def test_should_return_list_of_elements_when_two_tuples_given_second_longer(self):
         first = (3, 6)
         second = (8, 9, 400)
         gauss = Gauss()
-        self.assertEqual([[3, 8], [6, 9]], gauss.manual_zip(first, second))
+        self.assertEqual([[3, 8], [6, 9]], gauss.pair_items(first, second))
