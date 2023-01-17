@@ -243,4 +243,22 @@ class TestGauss(unittest.TestCase):
             [0., 0., 0., 0., 0., 0., 0., 0., 0., -25.4107]
         ]
         gauss = Gauss()
-        self.assertEqual(expected, gauss.lu_decomposition(matrix)[1])    
+        self.assertEqual(expected, gauss.lu_decomposition(matrix)[1])
+
+    def test_should_return_list_of_elements_when_two_tuples_given(self):
+        first = (3, 5)
+        second = (8, 9)
+        gauss = Gauss()
+        self.assertEqual([[3, 8], [5, 9]], gauss.manual_zip(first, second))
+
+    def test_should_return_list_of_elements_when_two_tuples_given_first_longer(self):
+        first = (3, 6, 9)
+        second = (8, 9)
+        gauss = Gauss()
+        self.assertEqual([[3, 8], [6, 9]], gauss.manual_zip(first, second))
+
+    def test_should_return_list_of_elements_when_two_tuples_given_second_longer(self):
+        first = (3, 6)
+        second = (8, 9, 400)
+        gauss = Gauss()
+        self.assertEqual([[3, 8], [6, 9]], gauss.manual_zip(first, second))
