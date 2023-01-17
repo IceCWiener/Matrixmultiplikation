@@ -50,14 +50,4 @@ class Utility:
             return (
                 "Der eingegebene Matrix-String konnte nicht in eine Liste konvertiert werden. Bitte die Eingabe in das Format: [[1, 2], [3, 4]] ändern.")
 
-    def manual_zip(self, part1: tuple, part2: tuple):
-        count = len(part1) if len(part1) > len(part2) else len(part2)
 
-        result = []
-        for i in range(count):
-            temp = []
-            temp.append(part1[i])
-            temp.append(part2[i])
-            result.append(temp)
-
-        return result

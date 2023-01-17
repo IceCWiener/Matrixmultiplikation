@@ -6,8 +6,8 @@ class Gauss:
         self.util = Utility()
 
     def lu_decomposition(self, a_matrix):
-
         # TODO: in utility einfügen, aber n muss bleiben
+        # TODO: round auf 4 stellen (mali)
         # Überprüft, ob die Matrix quadratisch ist
         n = len(a_matrix)
         for x in range(n):
@@ -30,8 +30,23 @@ class Gauss:
             for i in range(row + 1, n):
                 l_matrix[i][column] = a_matrix[i][column] / a_matrix[row][column]
                 a_matrix[i] = [modified_row - l_matrix[i][column]
-                               * pivot_row for modified_row, pivot_row in self.util.manual_zip(a_matrix[i], a_matrix[row])]
+                               * pivot_row for modified_row, pivot_row in self.manual_zip(a_matrix[i], a_matrix[row])]
             row += 1
             column += 1
 
         return l_matrix, a_matrix
+
+
+    def manual_zip(self, part1: tuple, part2: tuple):
+        #TODO: write test for this function (Nina)
+        #TODO: funktion umbenennen (mathe spezifisch :) )(Nina)
+        count = len(part1) if len(part1) > len(part2) else len(part2)
+
+        result = []
+        for i in range(count):
+            temp = []
+            temp.append(part1[i])
+            temp.append(part2[i])
+            result.append(temp)
+
+        return result
