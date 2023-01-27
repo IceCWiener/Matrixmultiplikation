@@ -28,9 +28,9 @@ class Gauss:
         row, column = 0, 0
         while row < n and column < n:
             for i in range(row + 1, n):
-                l_matrix[i][column] = a_matrix[i][column] / a_matrix[row][column]
-                a_matrix[i] = [modified_row - l_matrix[i][column]
-                               * pivot_row for modified_row, pivot_row in self.pair_items(a_matrix[i], a_matrix[row])]
+                l_matrix[i][column] = round(a_matrix[i][column] / a_matrix[row][column], 4)
+                a_matrix[i] = [round(modified_row - l_matrix[i][column]
+                               * pivot_row, 4) for modified_row, pivot_row in self.pair_items(a_matrix[i], a_matrix[row])]
             row += 1
             column += 1
 
