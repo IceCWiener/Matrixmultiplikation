@@ -6,8 +6,6 @@ class Gauss:
         self.util = Utility()
 
     def lu_decomposition(self, a_matrix):
-        # TODO: in utility einfügen, aber n muss bleiben
-        # TODO: round auf 4 stellen (mali)
         # Überprüft, ob die Matrix quadratisch ist
         n = len(a_matrix)
         for x in range(n):
@@ -15,7 +13,6 @@ class Gauss:
             if m != n:
                 raise ValueError("Die Matrix ist nicht quadratisch.")
 
-        # TODO: in utility einfügen
         # Erstellt eine leere untere Dreiecksmatrix
         l_matrix = [0.] * n
         for y in range(n):
@@ -29,6 +26,8 @@ class Gauss:
         while row < n and column < n:
             for i in range(row + 1, n):
                 l_matrix[i][column] = round(a_matrix[i][column] / a_matrix[row][column], 4)
+                # Die Rechnung vor der For-Schleife wir mit Hilfe der Funktion pair_items
+                # auf die zu modifizierende Zeile angewand.
                 a_matrix[i] = [round(modified_row - l_matrix[i][column]
                                * pivot_row, 4) for modified_row, pivot_row in self.pair_items(a_matrix[i], a_matrix[row])]
             row += 1
@@ -37,6 +36,8 @@ class Gauss:
         return l_matrix, a_matrix
 
 
+    """pair_items verbindet das i-te Item aus einer Liste part1 mit dem i-ten Item aus einer Liste part2, und giebt
+     das Ergebnis als einzelne Liste zurück. Die Einzelnen Listen stehen jeweils für eine Reihe aus der A Matrix"""
     def pair_items(self, part1: tuple, part2: tuple):
         if len(part1) >= len(part2):
             count = len(part2)
