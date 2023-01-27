@@ -5,8 +5,10 @@ class Gauss:
     def __init__(self) -> None:
         self.util = Utility()
 
+    """Die Funktion lu_decomposition zerlegt eine übergebene A Matrix in eine L und R Matrix und rundet
+    das Ergebnis auf die 4. Nachkommastelle"""
     def lu_decomposition(self, a_matrix):
-        # Überprüft, ob die Matrix quadratisch ist
+        # Überprüft, ob die übergebene Matrix quadratisch ist
         n = len(a_matrix)
         for x in range(n):
             m = len(a_matrix[x])
