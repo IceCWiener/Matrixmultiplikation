@@ -36,8 +36,6 @@ class Gauss:
             column += 1
 
         joint_matrix = self.util.add_matrices(l_matrix, a_matrix)
-
-
         return l_matrix, a_matrix, joint_matrix
 
 
