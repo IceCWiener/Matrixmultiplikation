@@ -35,7 +35,10 @@ class Gauss:
             row += 1
             column += 1
 
-        return l_matrix, a_matrix
+        joint_matrix = self.util.add_matrices(l_matrix, a_matrix)
+
+
+        return l_matrix, a_matrix, joint_matrix
 
 
     """pair_items verbindet das i-te Item aus einer Liste part1 mit dem i-ten Item aus einer Liste part2, und giebt

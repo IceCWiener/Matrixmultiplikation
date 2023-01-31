@@ -100,11 +100,12 @@ class GUI:
                 if input == None:
                     break
                 try:
-                    l_mat, u_mat = self.gauss.lu_decomposition(input)
+                    l_mat, u_mat, j_matrix = self.gauss.lu_decomposition(input)
                     window["-MATRIXL-"].update(
                         self.util.format_matrix_list_to_str(l_mat))
                     window["-MATRIXU-"].update(
                         self.util.format_matrix_list_to_str(u_mat))
+                    window["-MATRIXLU-"].update(self.util.format_matrix_list_to_str(j_matrix))
                 except ValueError:
                     window["-INPUTLU-"].print("\n Falsches Format, bitte neue Matrix eingeben")
         window.close()

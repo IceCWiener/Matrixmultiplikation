@@ -50,4 +50,8 @@ class Utility:
             return (
                 "Der eingegebene Matrix-String konnte nicht in eine Liste konvertiert werden. Bitte die Eingabe in das Format: [[1, 2], [3, 4]] ändern.")
 
-
+    def add_matrices(self, matrix1, matrix2):
+        for row in range(len(matrix1)):
+            for col in range(len(matrix1)):
+                matrix1[row][col] += matrix2[row][col]
+        return matrix1

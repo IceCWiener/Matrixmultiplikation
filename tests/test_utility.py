@@ -75,3 +75,26 @@ class TestUtility(unittest.TestCase):
         expected = "Matrizen können nicht multipliziert werden. Inkorrekte Dimensionen."
         util = Utility()
         self.assertEqual(expected, util.get_products(matrix_1, matrix_2))
+
+
+    def test_should_return_sum_of_2_matrices(self):
+        util = Utility()
+        matrix1 = [
+            [1.0, 0.0, 0.0],
+            [4.0, 1.0, 0.0],
+            [7.0, 2.0, 1.0]
+           ]
+
+        matrix2 = [
+            [1.0, 2.0, 3.0],
+            [0.0, -3.0, -6.0],
+            [0.0, 0.0, 0.0]
+        ]
+
+        expected = [
+            [2.0, 2.0, 3.0],
+            [4.0, -2.0, -6.0],
+            [7.0, 2.0, 1.0]
+        ]
+
+        self.assertEqual(expected, util.add_matrices(matrix1, matrix2))
