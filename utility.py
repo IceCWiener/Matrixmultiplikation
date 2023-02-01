@@ -52,7 +52,7 @@ class Utility:
 
     def add_matrices(self, matrix1, matrix2):
         result = [[0]*len(matrix1) for i in range(len(matrix1))]
-        print("result: ", result)
+        #print("result: ", result)
 
         for row in range(len(matrix1)):
             for col in range(len(matrix1)):
