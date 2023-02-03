@@ -52,9 +52,10 @@ class Utility:
 
     def add_matrices(self, matrix1, matrix2):
         result = [[0]*len(matrix1) for i in range(len(matrix1))]
-        #print("result: ", result)
-
         for row in range(len(matrix1)):
             for col in range(len(matrix1)):
-                result[row][col] = matrix1[row][col] + matrix2[row][col]
+                if row == col:
+                    result[row][col] = 1.
+                else:
+                    result[row][col] = matrix1[row][col] + matrix2[row][col]
         return result
