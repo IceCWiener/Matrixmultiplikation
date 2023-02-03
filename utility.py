@@ -55,7 +55,7 @@ class Utility:
         for row in range(len(matrix1)):
             for col in range(len(matrix1)):
                 if row == col:
-                    result[row][col] = 1.
+                    result[row][col] = matrix2[row][col]
                 else:
                     result[row][col] = matrix1[row][col] + matrix2[row][col]
         return result
